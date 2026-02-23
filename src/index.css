@@ -1,0 +1,1551 @@
+/* GLOBALT: VARIABLER */
+:root {
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --text-primary: #000000;
+  --text-secondary: #545454;
+
+  --pu2: #8871fe;
+  --pu5: #eeebff;
+
+  --white: #ffffff;
+  --border: #e5e5e5;
+}
+
+/* GLOBALT: RESET */
+* {
+  box-sizing: border-box;
+}
+
+/* GLOBALT: BAS */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: linear-gradient(180deg, #fff9ff 0%, #f6fcff 50%, #f7f6ff 100%);
+}
+
+/* GLOBALT: TYPO */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+/* Sidrubrik */
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* Alla underrubriker / sektionstitlar */
+h2 {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  margin: 14px 0 6px;
+  color: var(--text-primary);
+}
+
+/* Tredje nivån, t.ex. korttitlar */
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+p {
+  margin: 0 0 12px 0;
+  font-size: 18px;   
+  font-weight: 400;
+  line-height: 1.5;  
+}
+
+/* Grå text*/
+.text-secondary {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Introtext under sidrubrik */
+.page-intro {
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto 18px auto;
+  color: var(--text-secondary);
+}
+
+/* GLOBALT: LAYOUT */
+.app-shell {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Standard-padding på varje sida + extra plats för navbaren */
+.page {
+  padding: 16px;
+  padding-bottom: 100px;
+}
+
+/* GLOBALT: BUTTON */
+.btn {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+/* Liten “tryck”-känsla */
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* När knappen inte går att klicka */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* PRIMÄR KNAPP – lila bakgrund, svart text */
+.btn-primary {
+  background: #CCC2FE;               /* lila */
+  color: var(--text-primary);        /* svart text */
+}
+
+/* Hover (desktop) */
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* SEKUNDÄR KNAPP – transparent med ram */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+/* GLOBALT: ICON BUTTON */
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+}
+
+/* Lite feedback när man hovrar (mest desktop) */
+.icon-btn:hover {
+  background: #f7f7ff;
+}
+
+/* Liten tryck-känsla */
+.icon-btn:active {
+  transform: translateY(1px);
+}
+
+/* Farlig variant (t.ex. radera) */
+.icon-btn-danger {
+  background: #fff5f5;
+}
+
+.icon-btn-danger:hover {
+  background: #ffeaea;
+}
+/* GLOBALT: MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Själva rutan i modalen */
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+/* Stäng-knapp uppe till höger */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 22px;
+}
+
+/* GLOBALT: NAVBAR */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 72px;
+
+  margin: 0 auto;
+
+  background: var(--white);
+  border-top: 1px solid var(--border);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 6px;  
+  overflow: hidden;     
+
+  /* Rundat bara upptill */
+  border-radius: 18px 18px 0 0;
+}
+
+/* Varje knapp i navbaren */
+.nav-item {
+  flex: 1;
+  min-width: 0;
+
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  padding: 8px 6px;
+  margin: 0 2px;        /* lite luft mellan knapparna */
+  border-radius: 14px;
+
+  color: var(--text-secondary);
+}
+
+/* Storlek på ikonen */
+.nav-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Text under ikonen */
+.nav-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* När sidan är aktiv */
+.nav-item.active {
+  background: var(--pu5);
+  color: var(--pu2);
+}
+
+/* LOGIN-SIDAN */
+.auth-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+  justify-items: center;
+}
+
+/* Håller label + input i samma bredd */
+.auth-label {
+  width: 100%;
+  max-width: 360px;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* Inputfält */
+.auth-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* När man klickar i inputen */
+.auth-input:focus {
+  border-color: var(--pu2);
+}
+
+/* Knappar i login */
+.auth-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* Feltext */
+.auth-error {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* PROFILE-SIDAN */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+
+/* Avatar-rutan (placeholder) */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+/* Namn i profilen */
+.profile-name {
+  font-weight: 600;
+}
+
+/* Kort runt inställningar */
+.settings-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  margin-top: 12px;
+}
+
+/* Rubrik i settings */
+.settings-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* En rad i settings (klickbar) */
+.settings-row {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Texten till vänster */
+.settings-label {
+  font-size: 16px;
+}
+
+/* Högersidan (värde + ikon) */
+.settings-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Värdet (t.ex. ON/OFF) */
+.settings-value {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Chevron-ikonen */
+.settings-chevron {
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* PROFILE-SIDAN: SWITCH */
+.switch {
+  position: relative;
+  width: 44px;
+  height: 26px;
+}
+
+/* Döljer checkboxen */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Bakgrund på switchen */
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #ddd;
+  border-radius: 999px;
+  transition: 0.2s;
+}
+
+/* Knoppen som flyttar sig */
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+/* När switchen är på */
+.switch input:checked + .slider {
+  background: var(--pu2);
+}
+
+/* När switchen är på (flyttar knoppen) */
+.switch input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* LOGOUT (ANVÄNDS PÅ FLERA SIDOR) */
+.logout-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+/* EXERCISES-SIDAN */
+.exercise-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Övningskort */
+.exercise-card {
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(136, 113, 254, 0.12);
+  background: #f1efff;
+  border-radius: 18px;
+  padding: 14px;
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+/* Tryck-känsla på kortet */
+.exercise-card:active {
+  transform: scale(0.99);
+}
+
+/* “Pill” för minuter/info */
+.exercise-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0 auto 10px auto;
+}
+
+.exercise-pill-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.exercise-pill-text {
+  font-size: 12px;
+  color: #545454;
+}
+
+.exercise-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--text-primary);
+}
+
+.exercise-subtitle {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+/* MOOD-SIDAN */
+.page-mood {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* ====== SR-ONLY (för skärmläsare, inte synligt) ====== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* EMOJI PICKER*/
+/*SR-ONLY är för skärmläsare, inte synligt) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.emoji-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* => 3 per rad */
+  gap: 14px;
+  justify-items: center;
+  margin: 10px 0 16px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.emoji-btn {
+  width: 64px;
+  height: 64px;
+  border: none;
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.emoji-btn:active {
+  transform: scale(0.95);
+}
+
+/* tydligt fokus (tangentbord) */
+.emoji-btn:focus-visible {
+  outline: 3px solid var(--pu2);
+  outline-offset: 3px;
+}
+
+/* markerad utan "frame" */
+.emoji-btn.is-selected {
+  background: rgba(136, 113, 254, 0.14);
+  transform: scale(1.06);
+}
+
+.emoji-icon {
+  font-size: 40px;
+  line-height: 1;
+}
+
+/* Modal-input för custom emoji */
+.custom-emoji-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 18px;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.custom-emoji-input:focus {
+  border-color: var(--pu2);
+}
+
+.custom-emoji-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* Kortet runt textfältet */
+.mood-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+/* Själva textfältet */
+.mood-textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 16px;
+  resize: none;
+  min-height: 120px;
+}
+
+/* Små rubriker på sidan */
+.mood-label {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Lägg-till-tag */
+.tag-add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Inputen */
+.tag-input {
+  min-height: 44px;   
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  font-size: 16px;      
+  width: 120px;       
+}
+
+/* Plus-knappen */
+.tag-plus {
+  width: 44px;       
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Liten feedback */
+.tag-plus:active {
+  transform: scale(0.98);
+}
+
+/* Taggar i rad som kan brytas */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Tag-chip (mood-sidan) */
+.tag-chip {
+  border: none;
+  background: var(--pu5);
+  color: var(--pu2);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* När en tagg är vald (mood-sidan) */
+.tag-chip.is-selected {
+  background: var(--pu2);
+  color: var(--white);
+}
+
+/* Spara-knappen centrerad */
+.mood-save {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+/* CALENDAR-SIDAN */
+.calendar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+/* Rad med månad + knappar */
+.calendar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Månadens titel */
+.calendar-month {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+/* Knappgrupp för att byta månad */
+.calendar-nav {
+  display: flex;
+  gap: 8px;
+}
+
+/* 7 kolumner för veckan */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+/* Veckodagar (Mån, Tis…) */
+.calendar-weekday {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  font-weight: 600;
+}
+
+/* Standardruta i kalendern */
+.calendar-cell {
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tomma rutor (utfyllnad i början/slutet av månad) */
+.calendar-cell.empty {
+  background: transparent;
+  border: none;
+}
+
+/* Dagar man kan klicka på */
+.calendar-cell.day {
+  background: rgba(136, 113, 254, 0.06);
+  cursor: pointer;
+}
+
+.day-number {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* När dagen är “idag” */
+.calendar-cell.today {
+  border: 2px solid var(--pu2);
+  background: rgba(136, 113, 254, 0.12);
+}
+
+/* Bakgrund beroende på mood-nivå */
+.calendar-cell.mood-1 { background: rgba(136, 113, 254, 0.08); }
+.calendar-cell.mood-2 { background: rgba(136, 113, 254, 0.12); }
+.calendar-cell.mood-3 { background: rgba(136, 113, 254, 0.16); }
+.calendar-cell.mood-4 { background: rgba(136, 113, 254, 0.22); }
+.calendar-cell.mood-5 { background: rgba(136, 113, 254, 0.28); }
+
+/* Liten hover-effekt (bara om enheten har hover) */
+@media (hover: hover) {
+  .calendar-cell.day:hover {
+    transform: translateY(-1px);
+    transition: transform 0.15s ease;
+  }
+}
+
+/* CALENDAR */
+.calendar-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 1000;
+}
+
+.calendar-modal {
+  width: 100%;
+  max-width: 360px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.calendar-modal-title {
+  margin: 0 0 10px 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.calendar-modal-text {
+  margin: 0 0 14px 0;
+  color: var(--text-secondary);
+}
+
+.calendar-modal-mood {
+  font-size: 22px;
+}
+
+/* DAY PICKER */
+.rdp-day {
+  border-radius: 12px;
+}
+
+/* Mood-färg på dagarna */
+.rdp-day.mood-1 { background: rgba(255, 120, 120, 0.25); }
+.rdp-day.mood-2 { background: rgba(255, 190, 120, 0.25); }
+.rdp-day.mood-3 { background: rgba(180, 180, 180, 0.25); }
+.rdp-day.mood-4 { background: rgba(170, 220, 170, 0.28); }
+.rdp-day.mood-5 { background: rgba(140, 200, 255, 0.28); }
+
+/* När en dag är vald */
+.rdp-day_selected,
+.rdp-day_selected:focus-visible {
+  outline: 2px solid var(--pu2);
+  outline-offset: 2px;
+}
+
+/* DIARY-SIDAN */
+.diary-actions {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 18px;
+}
+
+/* Sökfältet (ikon + input + ikon) */
+.diary-search {
+  display: grid;
+  grid-template-columns: 34px 1fr 34px;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 10px;
+}
+
+.diary-search-input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  width: 100%;
+}
+
+.diary-search-icon {
+  color: var(--text-secondary);
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+}
+
+/* Rad för info som antal inlägg */
+.diary-meta {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.diary-count {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Lista med dagbokskort */
+.diary-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 12px;
+}
+
+/* Själva kortet */
+.diary-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+/* Toppdelen med ikon + titel + ikon */
+.diary-card-top-split {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Centrerar titel och datum */
+.diary-card-center {
+  text-align: center;
+}
+
+.diary-card-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.diary-date {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Själva texten i inlägget */
+.diary-text {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+/* Taggar under inlägget */
+.diary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Tagg som “pill” */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: var(--pu5);
+  color: var(--pu2);
+  border: 1px solid rgba(136, 113, 254, 0.18);
+}
+
+/* Rubrik inne i diary-modalen */
+.diary-modal-title {
+  text-align: center;
+  margin: 6px 0 12px;
+}
+
+/* Små rubriker inne i modalen */
+.diary-small-title {
+  margin: 10px 0 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Textarea i modalen */
+.diary-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  resize: none;
+  font-family: var(--font-body);
+}
+
+/* När man skriver i textfältet */
+.diary-textarea:focus {
+  border-color: var(--pu2);
+}
+
+/* Taggar i modalen */
+.tag-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Tag-chip i modalen */
+.tag-chip {
+  border: 1px solid var(--border);
+  background: #f6f6ff;
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* När en tagg är vald (modalen) */
+.tag-chip.is-active {
+  background: var(--pu5);
+  border-color: rgba(136, 113, 254, 0.25);
+  color: var(--pu2);
+  font-weight: 600;
+}
+
+/* Rad för input + plus-knapp */
+.tag-add-row {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Plus-knappen */
+.tag-add-btn {
+  height: 44px;
+  width: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--pu2);
+}
+
+/* PLAYER-SIDAN */
+.player {
+  text-align: center;
+}
+
+.player-cover {
+  display: grid;
+  place-items: center;
+  margin: 18px 0 10px;
+}
+
+/* Cirkeln som “cover” */
+.player-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(136, 113, 254, 0.18), rgba(255, 255, 255, 0.6));
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.player-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.player-author {
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+/* Begränsar bredd på ljudspelaren */
+.player-audio {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* HOME-SIDAN */
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.home-stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+}
+
+.home-stat-icon {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.home-stat-number {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.home-stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Rutan för dagens citat */
+.home-quote {
+  margin-top: 14px;
+  background: #f1efff;
+  border: 1px solid rgba(136, 113, 254, 0.12);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.home-quote-mark {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.home-quote-text {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+/* Rubrik för sektioner */
+.home-section-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 18px 0 10px;
+}
+
+/* Rekommendationskort i grid */
+.home-reco {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.home-reco-card {
+  background: #f1efff;
+  border: 1px solid rgba(136, 113, 254, 0.12);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.home-reco-icon {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.home-reco-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Populärt/rekommenderat -kort */
+.home-popular-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+}
+
+.home-popular-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.home-popular-sub {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.home-popular-card {
+  position: relative; 
+}
+
+.home-popular-time {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  background: var(--pu5);
+  color: var(--pu2);
+}
+.home-popular-left {
+  width: 100%;
+  padding-top: 18px; 
+}
+
+.home-popular-title {
+  text-align: center; 
+  width: 100%;
+}
+
+.home-popular-sub {
+  text-align: left;   
+  margin-top: 6px;
+  color: var(--text-primary); 
+}
+
+/* “Veckan”-kort */
+.home-week-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.home-week-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-week-emoji {
+  font-size: 20px;
+}
+
+/* Liten dekor */
+.home-week-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(136, 113, 254, 0.25);
+}
+
+.home-week-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* CHART  */
+.mood-chart-wrap {
+  margin-top: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+  display: grid;
+  justify-items: center;
+}
+
+.mood-chart-title {
+  width: 100%;
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+/* RESPONSIVE: iPad och uppåt */
+@media (min-width: 768px) {
+  .page {
+    padding: 22px;
+    padding-bottom: 110px;
+  }
+
+  /* Navbaren håller sig inom appens maxbredd */
+  .bottom-nav {
+    max-width: 900px;
+  }
+
+  /* Övningskort blir 3 kolumner på iPad */
+  .exercise-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  /* Emojis kan ligga fler per rad på större skärm */
+  .emoji-row {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+/* RESPONSIVE: extra liten mobil */
+@media (max-width: 360px) {
+  .exercise-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* RESPONSIVE: små skärmar (kalender) */
+@media (max-width: 420px) {
+  .calendar-grid {
+    gap: 6px;
+  }
+
+  .calendar-cell {
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  /* Ikonknappar i kalendern */
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+}
+/* Styling för videospelare */
+.video-js {
+  border-radius: 16px;
+  overflow: hidden;
+}
+/* AVLANGT KORT (t.ex. “Rekommenderat för dig”) */
+.long-card {
+  position: relative; 
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.06);
+  cursor: pointer;
+  text-align: left;
+}
+
+.long-card-left {
+  display: grid;
+  gap: 4px;
+}
+
+.long-card-title {
+  margin: 0;
+  font-size: 16px;  
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.long-card-sub {
+  margin: 4px 0 0 0;
+  font-size: 16px;   
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+.long-card-meta {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.long-card-time {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  padding: 4px 8px;
+  border-radius: 999px;
+
+  background: var(--pu5);
+  color: var(--pu2);
+}
+
+/* Play-cirkeln */
+.long-card-play {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f8f8ff;
+
+  display: grid;           
+  place-items: center;    
+  flex: 0 0 auto;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Liten tryck-känsla */
+.long-card:active {
+  transform: scale(0.99);
+}
+/* Play-knapp */
+.home-play {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f8f8ff;
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* TAGS – gemensam stil för alla taggar i appen */
+.tag-chip {
+  font-size: 16px;    
+  padding: 12px 16px;
+  min-height: 44px;     
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PROFILE PAGE */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-card {
+  margin-top: 16px;
+}
+
+/* Wrapper så kamera-knappen kan ligga ovanpå avataren */
+.avatar-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* Själva profilbilden */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background-color: #e9e9e9;
+  border: 1px solid var(--border);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Kamera-knappen ovanpå */
+.avatar-camera-btn {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+
+  border: none;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+}
+
+.avatar-camera-btn i {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.avatar-camera-btn:focus-visible {
+  outline: 3px solid var(--pu2);
+  outline-offset: 3px;
+}
+
+/* Enkel text-knapp för "Ta bort bild" */
+.link-btn {
+  background: transparent;
+  border: none;
+  color: var(--pu2);
+  cursor: pointer;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+/* Döljer element visuellt men låter skärmläsare läsa det */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

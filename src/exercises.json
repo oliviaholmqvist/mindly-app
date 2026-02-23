@@ -1,0 +1,44 @@
+[
+  {
+    "minutes": 3,
+    "title": "I skogen",
+    "subtitle": "Lugna skogsljud",
+    "author": "A. Andersson",
+    "audioUrl": "/audio/forest.mp3"
+  },
+  {
+    "minutes": 4,
+    "title": "Vid havet",
+    "subtitle": "Vågor och vind",
+    "author": "I. Holmqvist",
+    "audioUrl": "/audio/ocean.mp3"
+  },
+  {
+    "minutes": 2,
+    "title": "Andas lugnt",
+    "subtitle": "Fokusera på andetaget",
+    "author": "C. Avervik",
+    "audioUrl": "/audio/breathe.mp3"
+  },
+  {
+    "minutes": 5,
+    "title": "Släpp stress",
+    "subtitle": "Avslappnande guidning",
+    "author": "M. Holmqvist",
+    "audioUrl": "/audio/relax.mp3"
+  },
+  {
+    "minutes": 3,
+    "title": "Kvällsro",
+    "subtitle": "Varva ner inför sömn",
+    "author": "J. Jansson",
+    "audioUrl": "/audio/night.mp3"
+  },
+  {
+    "minutes": 4,
+    "title": "Morgonfokus",
+    "subtitle": "Starta dagen lugnt",
+    "author": "J. Westin",
+    "audioUrl": "/audio/morning.mp3"
+  }
+]
